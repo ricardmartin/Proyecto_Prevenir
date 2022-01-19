@@ -18,6 +18,7 @@ public class BurbujasGameManager : MonoBehaviour
     private GameObject canvasObject;
     public GameObject dialogueMaster;
     int numOfCorrects = 0;
+    public GameObject canvas2;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +55,15 @@ public class BurbujasGameManager : MonoBehaviour
         while (!_gameCompleted)
         {
             // GameObject _burbuja = Instantiate(burbuja, new Vector3(Random.Range(400,1000), 700, 0), Quaternion.identity);
-            GameObject _burbuja = Instantiate(burbuja, new Vector3(Random.Range(1100,1500) ,1300,0), Quaternion.identity);
-            _burbuja.transform.parent = burbujitas.transform;            
+            GameObject _burbuja = Instantiate(burbuja, new Vector3(Random.Range(0, 0) ,1300,0), Quaternion.identity);
+            
+            GameObject canvasGameObject = canvas2.gameObject;
+
+            _burbuja.transform.parent = canvasGameObject.transform;
+            _burbuja.transform.position  =  Vector3.zero;
+            _burbuja.transform.localPosition = Vector3.zero;
+
+            _burbuja.layer = 5;
             _burbuja.GetComponent<Button>().onClick.AddListener(() =>
             {
                 if (_burbuja.GetComponent<Burbuja>().correcta)

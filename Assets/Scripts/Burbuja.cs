@@ -18,6 +18,9 @@ public class Burbuja : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.localPosition = new Vector3(Random.Range(-850,850),700,0);
+        this.transform.localScale = new Vector3(3,3,3);
+
         imagenesCorrectas = new string[11] { "Sprites/sal", "Sprites/sabata", "Sprites/sabo", "Sprites/selva", "Sprites/sindria", "Sprites/so", "Sprites/sobre", "Sprites/sol", "Sprites/sopa", "Sprites/suau", "Sprites/sucre" };
         palabrasCorrectas = new string[11] { "Sounds/sal", "Sounds/sabata", "Sounds/sabo", "Sounds/selva", "Sounds/sindria", "Sounds/so", "Sounds/sobre", "Sounds/sol", "Sounds/sopa", "Sounds/suau", "Sounds/sucre" };
 
@@ -83,7 +86,7 @@ public class Burbuja : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 130 * Time.deltaTime, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 10 * Time.deltaTime, transform.position.z);
         if(transform.position.y < -150.0f)
         {
             Destroy(gameObject);
