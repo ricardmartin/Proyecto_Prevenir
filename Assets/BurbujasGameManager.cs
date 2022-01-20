@@ -18,6 +18,7 @@ public class BurbujasGameManager : MonoBehaviour
     private GameObject canvasObject;
     public GameObject dialogueMaster;
     int numOfCorrects = 0;
+    public GameObject cake;
     public GameObject canvas2;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class BurbujasGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cake.GetComponent<Image>().color = new Color(cake.GetComponent<Image>().color.r, cake.GetComponent<Image>().color.g, cake.GetComponent<Image>().color.b,(float)numOfCorrects / 10f);
     }
     private void Comentarios()
     {
@@ -50,7 +51,12 @@ public class BurbujasGameManager : MonoBehaviour
         feedback.clip = soundError;
         feedback.Play();
     }
-   
+   IEnumerator DestroyCorrect(GameObject _burbuja)
+    {
+        yield return 3;
+        Destroy(_burbuja);
+
+    }
     IEnumerator generateBubble()
     {
         while (!_gameCompleted)
@@ -97,6 +103,7 @@ public class BurbujasGameManager : MonoBehaviour
 
                             break;
                     }
+                 
                     if (numOfCorrects == 10)
                     {
                         dialogueMaster.gameObject.SetActive(true);
@@ -106,9 +113,10 @@ public class BurbujasGameManager : MonoBehaviour
                 else
                 {
                     SoundError();
+                    Destroy(_burbuja);
+
                 }
-                
-               // Destroy(_burbuja);
+
 
             });
             yield return new WaitForSecondsRealtime(4);

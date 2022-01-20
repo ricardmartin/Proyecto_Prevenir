@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     private GameObject[] cake;
+    public GameObject parent;
     float speed = 2;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,6 @@ public class MoveObject : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.Lerp(transform.position, cake[0].transform.position, speed * Time.deltaTime);
-
+        if (Vector3.Distance(transform.position, cake[0].transform.position) < 5) { Destroy(parent); }
     }
 }
