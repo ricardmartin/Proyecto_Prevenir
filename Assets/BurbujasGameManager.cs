@@ -50,6 +50,7 @@ public class BurbujasGameManager : MonoBehaviour
         feedback.clip = soundError;
         feedback.Play();
     }
+   
     IEnumerator generateBubble()
     {
         while (!_gameCompleted)
@@ -68,6 +69,7 @@ public class BurbujasGameManager : MonoBehaviour
             {
                 if (_burbuja.GetComponent<Burbuja>().correcta)
                 {
+                    _burbuja.GetComponent<Burbuja>().moveParticles.SetActive(true);
                     numOfCorrects++;
                     SoundCorrect();
                     switch (numOfCorrects)
@@ -105,11 +107,13 @@ public class BurbujasGameManager : MonoBehaviour
                 {
                     SoundError();
                 }
-               
-                Destroy(_burbuja);
+                
+               // Destroy(_burbuja);
 
             });
             yield return new WaitForSecondsRealtime(4);
         }
     }
+
+    
 }

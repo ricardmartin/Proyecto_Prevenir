@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Canvas
+  - Burbujas
+  - Cake
   layers:
   - Default
   - TransparentFX

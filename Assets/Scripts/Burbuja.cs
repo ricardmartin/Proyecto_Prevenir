@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Burbuja : MonoBehaviour
 {
+    public GameObject moveParticles;
+
     private Image exterior;
     private Image interior;
     public bool correcta = false;
@@ -14,7 +16,7 @@ public class Burbuja : MonoBehaviour
 
     public string[] imagenesIncorrectas;
     public string[] palabrasIncorrectas;
-    
+
     // Start is called before the first frame update
     void Start()
     {
