@@ -7,14 +7,15 @@ public class SkipConver : MonoBehaviour
 {
     public GameObject master;
     public GameObject nextMinigame;
-    public GameObject canvasObject;
+    public GameObject[] canvasObject;
     // Start is called before the first frame update
     void Start()
     {
+        canvasObject = GameObject.FindGameObjectsWithTag("CanvasImportant");
         this.GetComponent<Button>().onClick.AddListener(() =>
         {
             GameObject newObject = Instantiate(nextMinigame, new Vector3(0, 0, 0), Quaternion.identity);
-            newObject.transform.SetParent(canvasObject.transform, false);
+            newObject.transform.SetParent(canvasObject[0].transform, false);
 
             newObject.transform.localScale = new Vector3(1, 1, 1);
             Destroy(master);

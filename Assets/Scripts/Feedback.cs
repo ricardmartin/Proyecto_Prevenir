@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class Feedback : MonoBehaviour
+using UnityEngine.EventSystems;
+public class Feedback : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject _btn1;
     private Button _button1;
@@ -28,6 +28,20 @@ public class Feedback : MonoBehaviour
     int fraseIncorrecta = 0;
     public GameObject[] corrects;
     public GameObject[] incorrects;
+
+    private bool mouse_over = false;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        mouse_over = true;
+        Debug.Log("ENTRAMOS");
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        mouse_over = false;
+        Debug.Log("SALIMOS");
+
+    }
     IEnumerator DelayAction(float delayTime)
     {
         //Wait for the specified delay time before continuing.
@@ -54,7 +68,7 @@ public class Feedback : MonoBehaviour
                 StartCoroutine(newImages());
 
 
-                _txtFeedback.text = _Contador.ToString();
+                //_txtFeedback.text = _Contador.ToString();
 
             }
             else
@@ -81,7 +95,8 @@ public class Feedback : MonoBehaviour
                    
                 
 
-                _txtFeedback.text = _Contador.ToString();
+                
+                //_txtFeedback.text = _Contador.ToString();
 
             }
             else
@@ -107,7 +122,7 @@ public class Feedback : MonoBehaviour
                 StartCoroutine(newImages());
 
 
-                _txtFeedback.text = _Contador.ToString();
+               // _txtFeedback.text = _Contador.ToString();
 
             }
             else

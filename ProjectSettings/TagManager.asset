@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - Burbujas
   - Cake
+  - CanvasImportant
   layers:
   - Default
   - TransparentFX
